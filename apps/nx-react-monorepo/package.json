@@ -1,0 +1,8 @@
+{
+  "name": "@nx-react-monorepo/nx-react-monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "nx-react-monorepo"
+  }
+}
