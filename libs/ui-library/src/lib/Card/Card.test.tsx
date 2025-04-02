@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 import { Card } from './Card';
 
 describe('Card', () => {
@@ -14,28 +15,28 @@ describe('Card', () => {
   it('applies custom className', () => {
     const { container } = render(
       <Card className="custom-class">
-        <div>Content</div>
+        <div>Test Content</div>
       </Card>
     );
     expect(container.firstChild).toHaveClass('custom-class');
   });
 
   it('handles onClick event', () => {
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
     render(
       <Card onClick={handleClick}>
-        <div>Clickable Content</div>
+        <div>Test Content</div>
       </Card>
     );
-    
-    fireEvent.click(screen.getByRole('button'));
+    const card = screen.getByText('Test Content').parentElement;
+    card?.click();
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
   it('adds button role when onClick is provided', () => {
     render(
-      <Card onClick={() => {}}>
-        <div>Clickable Content</div>
+      <Card onClick={() => console.log('clicked')}>
+        <div>Test Content</div>
       </Card>
     );
     expect(screen.getByRole('button')).toBeInTheDocument();
@@ -44,7 +45,7 @@ describe('Card', () => {
   it('does not add button role when onClick is not provided', () => {
     render(
       <Card>
-        <div>Non-Clickable Content</div>
+        <div>Test Content</div>
       </Card>
     );
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
@@ -55,7 +56,7 @@ describe('Card.Header', () => {
   it('renders header content correctly', () => {
     render(
       <Card.Header>
-        <h2>Header Content</h2>
+        <div>Header Content</div>
       </Card.Header>
     );
     expect(screen.getByText('Header Content')).toBeInTheDocument();
@@ -66,7 +67,7 @@ describe('Card.Content', () => {
   it('renders content correctly', () => {
     render(
       <Card.Content>
-        <p>Main Content</p>
+        <div>Main Content</div>
       </Card.Content>
     );
     expect(screen.getByText('Main Content')).toBeInTheDocument();

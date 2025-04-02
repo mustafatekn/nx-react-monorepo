@@ -1,7 +1,8 @@
-/// <reference types='vitest' />
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import * as path from 'path';
 
 export default defineConfig(() => ({
@@ -13,6 +14,7 @@ export default defineConfig(() => ({
       entryRoot: 'src',
       tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
     }),
+    nxViteTsPaths(),
   ],
   resolve: {
     alias: {
@@ -51,14 +53,14 @@ export default defineConfig(() => ({
     },
   },
   test: {
-    watch: false,
     globals: true,
     environment: 'jsdom',
-    include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    reporters: ['default'],
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    setupFiles: ['./src/test-setup.ts'],
+    css: true,
     coverage: {
-      reportsDirectory: './test-output/vitest/coverage',
       provider: 'v8' as const,
+      reporter: ['text', 'json', 'html'],
     },
   },
 }));

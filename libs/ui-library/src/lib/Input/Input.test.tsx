@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { vi } from 'vitest';
 import { Input } from './Input';
 
 describe('Input', () => {
@@ -21,13 +22,13 @@ describe('Input', () => {
   });
 
   it('handles onChange event', () => {
-    const handleChange = jest.fn();
+    const handleChange = vi.fn();
     render(<Input onChange={handleChange} />);
     
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test' } });
     
-    expect(handleChange).toHaveBeenCalled();
+    expect(handleChange).toHaveBeenCalledTimes(1);
   });
 
   it('handles disabled state', () => {
