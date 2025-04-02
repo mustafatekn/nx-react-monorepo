@@ -1,82 +1,75 @@
-# NxReactMonorepo
+# Nx React Monorepo
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+This monorepo is a modern web application development environment built with Nx Tools. It contains two different applications and a shared UI library, demonstrating the power of monorepo architecture in managing multiple applications with shared components. Nx provides powerful features such as project dependency visualization, intelligent build caching, parallel task execution, and automated code generation to streamline the development process.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## Project Structure
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
-
-## Finish your CI setup
-
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/JrQe1LC0MT)
-
-
-## Run tasks
-
-To run the dev server for your app, use:
-
-```sh
-npx nx serve nx-react-monorepo
+```
+nx-react-monorepo/
+├── apps/
+│   ├── e-commerce/           # E-commerce application
+│   └── social-media-dashboard/ # Social media dashboard application
+├── libs/
+│   └── ui-library/            # Shared UI components
+└── tools/                    # Nx configurations
 ```
 
-To create a production bundle:
+## Technologies Used
 
-```sh
-npx nx build nx-react-monorepo
+- **Nx Tools**: Monorepo management and build system
+- **React**: Frontend development
+- **TypeScript**: Type safety
+- **Styled Components**: CSS-in-JS styling solution
+- **Vite**: Fast development environment
+- **Vitest**: Testing framework
+- **Testing Library**: Component testing utilities
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm (v9 or later)
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
 ```
 
-To see all available targets to run for a project, run:
+### Running the Project
 
-```sh
-npx nx show project nx-react-monorepo
+You have two options to run the projects:
+
+#### Option 1: Using Nx Console (Recommended for VS Code users)
+
+1. Install the Nx Console extension in VS Code
+2. Open the Nx Console from the VS Code sidebar
+3. Select the project you want to run
+4. Choose the desired command (serve, build, test, etc.)
+
+#### Option 2: Using Nx Commands
+
+First, build all projects:
+```bash
+npx nx run-many --target=build --all
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+Then, you can serve either application:
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/react:app demo
+Run the e-commerce application:
+```bash
+npx nx serve e-commerce
 ```
 
-To generate a new library, use:
-
-```sh
-npx nx g @nx/react:lib mylib
+Run the social media dashboard:
+```bash
+npx nx serve social-media-dashboard
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Run ui-library tests:
+```bash
+npx nx test ui-library
+```
