@@ -1,5 +1,5 @@
 {
-  "name": "ui-library",
+  "name": "@nx-react-monorepo/ui-library",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
@@ -15,8 +15,8 @@
   },
   "sideEffects": false,
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "styled-components": "^6.1.8"
   }
 }
