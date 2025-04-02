@@ -4,10 +4,7 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/nx-react-monorepo-e2e"
-    },
-    {
-      "path": "./apps/nx-react-monorepo"
+      "path": "./libs/ui-library"
     }
   ]
 }
