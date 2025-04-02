@@ -62,9 +62,16 @@
     }
   ],
   "targetDefaults": {
-    "test": {
+    "build": {
       "dependsOn": ["^build"]
-    }
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "options": {
+        "testTimeout": 10000
+      }
+    },
+    "lint": {}
   },
   "generators": {
     "@nx/react": {
