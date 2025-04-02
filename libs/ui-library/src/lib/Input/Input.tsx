@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const StyledInput = styled.input<{ error?: boolean }>`
+const commonStyles = css<{ error?: boolean }>`
   width: 100%;
   padding: 8px 12px;
   border: 1px solid ${props => props.error ? '#dc3545' : '#ced4da'};
@@ -20,12 +20,24 @@ const StyledInput = styled.input<{ error?: boolean }>`
   }
 `;
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+const StyledInput = styled.input<{ error?: boolean }>`
+  ${commonStyles}
+`;
+
+const StyledTextarea = styled.textarea<{ error?: boolean }>`
+  ${commonStyles}
+  min-height: 100px;
+  resize: vertical;
+`;
+
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'as'> {
   error?: boolean;
+  as?: React.ElementType;
 }
 
-export function Input({ error, ...props }: InputProps) {
-  return <StyledInput error={error} {...props} />;
+export function Input({ error, as, ...props }: InputProps) {
+  const Component = as === 'textarea' ? StyledTextarea : StyledInput;
+  return <Component error={error} {...props} />;
 }
 
 export default Input; 

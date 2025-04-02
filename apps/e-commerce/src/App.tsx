@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ProductList } from '../pages/ProductList/ProductList';
-import { ProductDetails } from '../pages/ProductDetails/ProductDetails';
+import ProductList from './pages/ProductList/ProductList';
+import ProductDetails from './pages/ProductDetails/ProductDetails';
 
 const router = {
   future: {
@@ -9,7 +9,7 @@ const router = {
   }
 };
 
-export function App() {
+const App = () => {
   return (
     <Router future={router.future}>
       <Routes>
@@ -20,3 +20,5 @@ export function App() {
     </Router>
   );
 }
+
+export default App;

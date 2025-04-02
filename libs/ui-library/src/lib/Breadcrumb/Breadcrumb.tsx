@@ -13,7 +13,7 @@ const BreadcrumbList = styled.ol`
   padding: 0;
 `;
 
-const BreadcrumbItem = styled.li`
+const BreadcrumbItem = styled.li<{ children?: React.ReactNode }>`
   display: flex;
   align-items: center;
   
@@ -24,7 +24,7 @@ const BreadcrumbItem = styled.li`
   }
 `;
 
-const BreadcrumbLink = styled.a`
+const BreadcrumbLink = styled.a<{ href: string; children?: React.ReactNode }>`
   color: #007bff;
   text-decoration: none;
   
@@ -33,17 +33,17 @@ const BreadcrumbLink = styled.a`
   }
 `;
 
-const BreadcrumbText = styled.span`
+const BreadcrumbText = styled.span<{ children?: React.ReactNode }>`
   color: #6c757d;
 `;
 
-export interface BreadcrumbItem {
+export interface BreadcrumbItemInterface {
   label: string;
   href?: string;
 }
 
 export interface BreadcrumbProps {
-  items: BreadcrumbItem[];
+  items: BreadcrumbItemInterface[];
 }
 
 export function Breadcrumb({ items }: BreadcrumbProps) {

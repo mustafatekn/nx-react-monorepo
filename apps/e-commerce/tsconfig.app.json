@@ -23,10 +23,5 @@
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.json"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
   ]
 }

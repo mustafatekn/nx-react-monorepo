@@ -16,8 +16,8 @@ export default defineConfig(() => ({
   ],
   resolve: {
     alias: {
-      '@nx-react-monorepo/ui-library': path.resolve(__dirname, 'src/index.ts'),
-      '@nx-react-monorepo/ui-library/': path.resolve(__dirname, 'src/'),
+      '@ui-library': path.resolve(__dirname, 'src/index.ts'),
+      '@ui-library/': path.resolve(__dirname, 'src/'),
     },
   },
   // Uncomment this if you are using workers.
@@ -34,17 +34,20 @@ export default defineConfig(() => ({
       transformMixedEsModules: true,
     },
     lib: {
-      // Could also be a dictionary or array of multiple entry points.
-      entry: 'src/index.ts',
-      name: '@nx-react-monorepo/ui-library',
+      entry: path.resolve(__dirname, 'src/index.ts'),
+      name: 'ui-library',
       fileName: 'index',
-      // Change this to the formats you want to support.
-      // Don't forget to update your package.json as well.
       formats: ['es' as const],
     },
     rollupOptions: {
-      // External packages that should not be bundled into your library.
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'styled-components'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'styled-components': 'styled',
+        },
+      },
     },
   },
   test: {

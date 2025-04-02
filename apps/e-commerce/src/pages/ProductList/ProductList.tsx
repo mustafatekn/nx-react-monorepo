@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Card, Breadcrumb, Pagination, Input, Dropdown } from '@ui-library';
+import { Card, Breadcrumb, Pagination, Input, Dropdown, Container } from '@ui-library';
 import productsData from '../../data/products.json';
 import categoriesData from '../../data/categories.json';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ const sortOptions = [
   { label: 'Price (High to Low)', value: 'price-desc' }
 ];
 
-export const ProductList = () => {
+const ProductList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +24,7 @@ export const ProductList = () => {
   const itemsPerPage = 8;
 
   // Reset page when filters change
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSearchTerm(e.target.value);
     setCurrentPage(1);
   };
@@ -78,95 +78,95 @@ export const ProductList = () => {
   const categories = ['All', ...categoriesData.categories.map(category => category.name)];
 
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <Breadcrumb
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Products', href: '/products' }
-          ]}
-        />
-        
-        <div className={styles.filtersSection}>
-          <div className={styles.filtersTop}>
-            <Input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className={styles.searchInput}
-            />
-            <Dropdown
-              options={sortOptions}
-              value={sortBy}
-              onChange={handleSortChange}
-              placeholder="Sort by"
-              className={styles.sortDropdown}
-            />
-          </div>
-          <div className={styles.categoryButtons}>
-            {categories.map((category) => {
-              const categoryData = category === 'All' 
-                ? { icon: '🏷️' } 
-                : categoriesData.categories.find(c => c.name === category);
-              
-              return (
-                <button
-                  key={category}
-                  onClick={() => handleCategoryChange(category)}
-                  className={`${styles.categoryButton} ${selectedCategory === category ? styles.active : ''}`}
-                >
-                  <span className={styles.categoryIcon}>{categoryData?.icon}</span>
-                  <span>{category}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className={styles.productsGrid}>
-          {paginatedProducts.map((product) => (
-            <Card
-              key={product.id}
-              onClick={() => navigate(`/products/${product.id}`)}
-              className={styles.card}
-            >
-              <div className={styles.imageContainer}>
-                <img
-                  src={imageErrors[product.id] ? PLACEHOLDER_IMAGE : product.image}
-                  alt={product.name}
-                  className={styles.image}
-                  onError={() => handleImageError(product.id)}
-                />
-              </div>
-              <div className={styles.details}>
-                <div className={styles.header}>
-                  <span className={styles.categoryBadge}>
-                    {categoriesData.categories.find(c => c.name === product.category)?.icon} {product.category}
-                  </span>
-                  <h3 className={styles.title}>{product.name}</h3>
-                  <p className={styles.description}>{product.descriptionSummary}</p>
-                </div>
-                <div className={styles.footer}>
-                  <p className={styles.price}>${product.price}</p>
-                  <div className={styles.rating}>
-                    <span className={styles.star}>★</span>
-                    <span>{product.rating}</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        <div className={styles.paginationContainer}>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
+    <Container>
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Products', href: '/products' }
+        ]}
+      />
+      
+      <div className={styles.filtersSection}>
+        <div className={styles.filtersTop}>
+          <Input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className={styles.searchInput}
+          />
+          <Dropdown
+            options={sortOptions}
+            value={sortBy}
+            onChange={handleSortChange}
+            placeholder="Sort by"
+            className={styles.sortDropdown}
           />
         </div>
+        <div className={styles.categoryButtons}>
+          {categories.map((category) => {
+            const categoryData = category === 'All' 
+              ? { icon: '🏷️' } 
+              : categoriesData.categories.find(c => c.name === category);
+            
+            return (
+              <button
+                key={category}
+                onClick={() => handleCategoryChange(category)}
+                className={`${styles.categoryButton} ${selectedCategory === category ? styles.active : ''}`}
+              >
+                <span className={styles.categoryIcon}>{categoryData?.icon}</span>
+                <span>{category}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
+
+      <div className={styles.productsGrid}>
+        {paginatedProducts.map((product) => (
+          <Card
+            key={product.id}
+            onClick={() => navigate(`/products/${product.id}`)}
+            className={styles.card}
+          >
+            <div className={styles.imageContainer}>
+              <img
+                src={imageErrors[product.id] ? PLACEHOLDER_IMAGE : product.image}
+                alt={product.name}
+                className={styles.image}
+                onError={() => handleImageError(product.id)}
+              />
+            </div>
+            <div className={styles.details}>
+              <div className={styles.header}>
+                <span className={styles.categoryBadge}>
+                  {categoriesData.categories.find(c => c.name === product.category)?.icon} {product.category}
+                </span>
+                <h3 className={styles.title}>{product.name}</h3>
+                <p className={styles.description}>{product.descriptionSummary}</p>
+              </div>
+              <div className={styles.footer}>
+                <p className={styles.price}>${product.price}</p>
+                <div className={styles.rating}>
+                  <span className={styles.star}>★</span>
+                  <span>{product.rating}</span>
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <div className={styles.paginationContainer}>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
+    </Container>
   );
 }; 
+
+export default ProductList;

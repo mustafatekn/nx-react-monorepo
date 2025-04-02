@@ -28,9 +28,4 @@
     "../../libs/ui-library/src/**/*.ts",
     "../../libs/ui-library/src/**/*.tsx"
   ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
 }

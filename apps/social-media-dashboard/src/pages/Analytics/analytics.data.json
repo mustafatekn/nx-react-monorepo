@@ -1,0 +1,50 @@
+{
+  "metrics": [
+    {
+      "metric": "Total Reach",
+      "value": 45000,
+      "target": 50000,
+      "unit": "people"
+    },
+    {
+      "metric": "Engagement Rate",
+      "value": 12.5,
+      "target": 15,
+      "unit": "%"
+    },
+    {
+      "metric": "Post Frequency",
+      "value": 4,
+      "target": 5,
+      "unit": "posts/week"
+    },
+    {
+      "metric": "Response Time",
+      "value": 2.5,
+      "target": 2,
+      "unit": "hours"
+    }
+  ],
+  "audience": [
+    {
+      "category": "18-24 years",
+      "percentage": 35,
+      "trend": "up"
+    },
+    {
+      "category": "25-34 years",
+      "percentage": 45,
+      "trend": "stable"
+    },
+    {
+      "category": "35-44 years",
+      "percentage": 15,
+      "trend": "down"
+    },
+    {
+      "category": "45+ years",
+      "percentage": 5,
+      "trend": "stable"
+    }
+  ]
+} 

@@ -1,0 +1,76 @@
+{
+  "stats": [
+    {
+      "platform": "Facebook",
+      "followers": 12500,
+      "engagement": 8.5,
+      "posts": 45
+    },
+    {
+      "platform": "Twitter",
+      "followers": 8900,
+      "engagement": 12.3,
+      "posts": 78
+    },
+    {
+      "platform": "Instagram",
+      "followers": 15600,
+      "engagement": 15.7,
+      "posts": 92
+    },
+    {
+      "platform": "LinkedIn",
+      "followers": 6700,
+      "engagement": 6.8,
+      "posts": 34
+    }
+  ],
+  "activities": [
+    {
+      "title": "New product launch announcement",
+      "platform": "Facebook",
+      "time": "2 hours ago",
+      "type": "post"
+    },
+    {
+      "title": "Customer feedback received",
+      "platform": "Twitter",
+      "time": "4 hours ago",
+      "type": "comment"
+    },
+    {
+      "title": "Campaign performance report",
+      "platform": "LinkedIn",
+      "time": "6 hours ago",
+      "type": "post"
+    },
+    {
+      "title": "Viral meme shared",
+      "platform": "Instagram",
+      "time": "8 hours ago",
+      "type": "post"
+    }
+  ],
+  "topics": [
+    {
+      "title": "#NewProductLaunch",
+      "mentions": 1250,
+      "sentiment": "positive"
+    },
+    {
+      "title": "#CustomerSupport",
+      "mentions": 890,
+      "sentiment": "neutral"
+    },
+    {
+      "title": "#BrandAwareness",
+      "mentions": 750,
+      "sentiment": "positive"
+    },
+    {
+      "title": "#ServiceIssues",
+      "mentions": 450,
+      "sentiment": "negative"
+    }
+  ]
+} 
