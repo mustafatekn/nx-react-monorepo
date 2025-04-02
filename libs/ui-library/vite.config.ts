@@ -14,6 +14,12 @@ export default defineConfig(() => ({
       tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
     }),
   ],
+  resolve: {
+    alias: {
+      '@nx-react-monorepo/ui-library': path.resolve(__dirname, 'src/index.ts'),
+      '@nx-react-monorepo/ui-library/': path.resolve(__dirname, 'src/'),
+    },
+  },
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
