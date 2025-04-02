@@ -1,28 +1,9 @@
-import styled from 'styled-components';
-
-const StyledCard = styled.div`
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-`;
-
-const CardHeader = styled.div`
-  padding: 16px;
-  border-bottom: 1px solid #eee;
-`;
-
-const CardContent = styled.div`
-  padding: 16px;
-`;
-
-const CardFooter = styled.div`
-  padding: 16px;
-  border-top: 1px solid #eee;
-`;
+import './Card.css';
 
 export interface CardProps {
   children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
 }
 
 export interface CardHeaderProps {
@@ -37,8 +18,28 @@ export interface CardFooterProps {
   children: React.ReactNode;
 }
 
-export function Card({ children }: CardProps) {
-  return <StyledCard>{children}</StyledCard>;
+export function CardHeader({ children }: CardHeaderProps) {
+  return <div className="card-header">{children}</div>;
+}
+
+export function CardContent({ children }: CardContentProps) {
+  return <div className="card-content">{children}</div>;
+}
+
+export function CardFooter({ children }: CardFooterProps) {
+  return <div className="card-footer">{children}</div>;
+}
+
+export function Card({ children, onClick, className }: CardProps) {
+  return (
+    <div 
+      className={`card ${className || ''}`}
+      onClick={onClick}
+      role={onClick ? 'button' : undefined}
+    >
+      {children}
+    </div>
+  );
 }
 
 Card.Header = CardHeader;

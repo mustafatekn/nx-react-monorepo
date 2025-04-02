@@ -1,16 +1,22 @@
-import styled from 'styled-components';
-import NxWelcome from './nx-welcome';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ProductList } from '../pages/ProductList/ProductList';
+import { ProductDetails } from '../pages/ProductDetails/ProductDetails';
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+const router = {
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true
+  }
+};
 
 export function App() {
   return (
-    <StyledApp>
-      <NxWelcome title="e-commerce" />
-    </StyledApp>
+    <Router future={router.future}>
+      <Routes>
+        <Route path="/" element={<ProductList />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;

@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Electronics",
+      "description": "Electronic devices and accessories",
+      "icon": "📱"
+    },
+    {
+      "id": 2,
+      "name": "Furniture",
+      "description": "Home and office furniture",
+      "icon": "🪑"
+    },
+    {
+      "id": 3,
+      "name": "Books",
+      "description": "Books and e-books",
+      "icon": "📚"
+    },
+    {
+      "id": 4,
+      "name": "Sports",
+      "description": "Sports equipment and accessories",
+      "icon": "⚽"
+    },
+    {
+      "id": 5,
+      "name": "Fashion",
+      "description": "Clothing and accessories",
+      "icon": "👕"
+    },
+    {
+      "id": 6,
+      "name": "Home & Kitchen",
+      "description": "Home appliances and kitchen equipment",
+      "icon": "🏠"
+    },
+    {
+      "id": 7,
+      "name": "Gaming",
+      "description": "Video games and gaming accessories",
+      "icon": "🎮"
+    },
+    {
+      "id": 8,
+      "name": "Beauty",
+      "description": "Beauty and personal care products",
+      "icon": "💄"
+    }
+  ]
+} 
