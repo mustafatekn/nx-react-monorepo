@@ -17,7 +17,7 @@
     "types": ["jest", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
-      "@nx-react-monorepo/ui-library": ["libs/ui-library/src/index.ts"],
+      "@nx-react-monorepo/ui-library": ["libs/ui-library/src/index.ts"]
     }
   }
 }
