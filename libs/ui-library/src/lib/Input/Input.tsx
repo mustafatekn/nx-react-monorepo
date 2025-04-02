@@ -4,7 +4,7 @@ const StyledInput = styled.input<{ error?: boolean }>`
   width: 100%;
   padding: 8px 12px;
   border: 1px solid ${props => props.error ? '#dc3545' : '#ced4da'};
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 16px;
   transition: border-color 0.15s ease-in-out;
   

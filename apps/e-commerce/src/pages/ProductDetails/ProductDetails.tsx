@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { Breadcrumb, Button, Card } from '@ui-library';
+import { Breadcrumb, Button } from '@ui-library';
 import productsData from '../../data/products.json';
-import './ProductDetails.css';
+import categoriesData from '../../data/categories.json';
+import styles from './ProductDetails.module.scss';
 
 export const ProductDetails = () => {
   const { id } = useParams();
@@ -11,53 +12,69 @@ export const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="product-details-container">
-        <h1 className="product-not-found">Product not found</h1>
-        <Button onClick={() => navigate('/products')}>Back to Products</Button>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <h1 className={styles.notFound}>Product not found</h1>
+          <Button onClick={() => navigate('/products')}>Back to Products</Button>
+        </div>
       </div>
     );
   }
 
-  return (
-    <div className="product-details-container">
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Products', href: '/products' },
-          { label: product.name, href: `/products/${product.id}` }
-        ]}
-      />
+  const category = categoriesData.categories.find(c => c.name === product.category);
 
-      <div className="product-details-content">
-        <Card>
-          <Card.Header>
-            <h2 className="product-title">{product.name}</h2>
-          </Card.Header>
-          <Card.Content>
-            <div className="product-grid">
-              <div className="product-image-container">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="product-image"
-                />
-              </div>
-              <div className="product-info">
-                <p className="product-price">${product.price}</p>
-                <p className="product-description">{product.description}</p>
-                <div className="product-rating">
-                  <span className="star">★</span>
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Products', href: '/products' },
+            { label: product.name, href: `/products/${product.id}` }
+          ]}
+        />
+
+        <div className={styles.grid}>
+          <div className={styles.imageSection}>
+            <img src={product.image} alt={product.name} className={styles.image} />
+          </div>
+          
+          <div className={styles.infoSection}>
+            <div className={styles.header}>
+              <span className={styles.categoryBadge}>
+                {category?.icon} {product.category}
+              </span>
+              <h1 className={styles.title}>{product.name}</h1>
+              <div className={styles.meta}>
+                <span className={styles.price}>${product.price}</span>
+                <div className={styles.rating}>
+                  <span className={styles.star}>★</span>
                   <span>{product.rating}</span>
                 </div>
-                <p className="product-category">Category: {product.category}</p>
-                <p className="product-stock">Stock: {product.stock} units</p>
-                <Button onClick={() => alert('Added to cart!')}>
-                  Add to Cart
-                </Button>
               </div>
             </div>
-          </Card.Content>
-        </Card>
+
+            <div className={styles.descriptionSection}>
+              <h2>Product Description</h2>
+              <p className={styles.description}>{product.description}</p>
+            </div>
+
+            <div className={styles.actions}>
+              <div className={styles.stockInfo}>
+                <span className={`${styles.stockStatus} ${product.stock > 0 ? styles.inStock : styles.outOfStock}`}>
+                  {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
+                </span>
+                {product.stock > 0 && <span className={styles.stockCount}>({product.stock} available)</span>}
+              </div>
+              <Button 
+                onClick={() => console.log('Add to cart:', product.id)}
+                disabled={product.stock === 0}
+              >
+                Add to Cart
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

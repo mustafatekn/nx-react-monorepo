@@ -3,3 +3,4 @@ export * from './lib/Card/Card';
 export * from './lib/Input/Input';
 export * from './lib/Breadcrumb/Breadcrumb';
 export * from './lib/Pagination/Pagination';
+export * from './lib/Dropdown/Dropdown';

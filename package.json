@@ -53,6 +53,7 @@
     "jsdom": "~22.1.0",
     "nx": "20.7.0",
     "prettier": "^2.6.2",
+    "sass-embedded": "^1.86.1",
     "tslib": "^2.3.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.19.0",
