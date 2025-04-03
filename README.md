@@ -1,11 +1,10 @@
 # Nx React Monorepo
 
-This monorepo is a modern web application development environment built with Nx Tools. It contains two different applications and a shared UI library, demonstrating the power of monorepo architecture in managing multiple applications with shared components. Nx provides powerful features such as project dependency visualization, intelligent build caching, parallel task execution, and automated code generation to streamline the development process.
+This monorepo is a modern web application development environment built with Nx Tools. It contains two different applications and a shared UI library, demonstrating the power of monorepo architecture in managing multiple applications with shared components. Nx provides powerful features such as project dependency visualization, intelligent build caching, parallel task execution, and automated code generation to streamline the development process. Additionally, the UI library, E-commerce and Social-media-dashboard applications were developed using Cursor.
 
 ## Project Structure
 
-```
-nx-react-monorepo/
+```nx-react-monorepo/
 ├── apps/
 │   ├── e-commerce/           # E-commerce application
 │   └── social-media-dashboard/ # Social media dashboard application
@@ -20,6 +19,7 @@ nx-react-monorepo/
 - **React**: Frontend development
 - **TypeScript**: Type safety
 - **Styled Components**: CSS-in-JS styling solution
+- **SASS/SCSS**: Advanced CSS preprocessing with nesting capabilities
 - **Vite**: Fast development environment
 - **Vitest**: Testing framework
 - **Testing Library**: Component testing utilities
